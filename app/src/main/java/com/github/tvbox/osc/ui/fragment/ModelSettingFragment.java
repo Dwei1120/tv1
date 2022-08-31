@@ -58,6 +58,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
     private TextView tvDns;
     private TextView tvHomeRec;
     private TextView tvSearchView;
+    private TextView tvFastSearchText;
 
     public static ModelSettingFragment newInstance() {
         return new ModelSettingFragment().setArguments();
@@ -74,6 +75,8 @@ public class ModelSettingFragment extends BaseLazyFragment {
 
     @Override
     protected void init() {
+        tvFastSearchText = findViewById(R.id.showFastSearchText);
+        tvFastSearchText.setText(Hawk.get(HawkConfig.FAST_SEARCH_MODE, false) ? "已开启" : "已关闭");
         tvDebugOpen = findViewById(R.id.tvDebugOpen);
         tvParseWebView = findViewById(R.id.tvParseWebView);
         tvMediaCodec = findViewById(R.id.tvMediaCodec);
@@ -488,6 +491,14 @@ public class ModelSettingFragment extends BaseLazyFragment {
                 findViewById(R.id.llDebug).setVisibility(View.VISIBLE);
             }
         };
+        findViewById(R.id.showFastSearch).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FastClickCheckUtil.check(v);
+                Hawk.put(HawkConfig.FAST_SEARCH_MODE, !Hawk.get(HawkConfig.FAST_SEARCH_MODE, false));
+                tvFastSearchText.setText(Hawk.get(HawkConfig.FAST_SEARCH_MODE, false) ? "已开启" : "已关闭");
+            }
+        });
     }
 
     @Override
