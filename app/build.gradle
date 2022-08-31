@@ -10,6 +10,8 @@ android {
         versionCode 1
         versionName '1.5.5'
         multiDexEnabled true
+        aaptOptions.cruncherEnabled = false
+        aaptOptions.useNewCruncher = false
         //设置room的Schema的位置
         javaCompileOptions {
             annotationProcessorOptions {
@@ -17,7 +19,15 @@ android {
             }
         }
     }
-
+android {
+  packagingOptions {
+      pickFirst 'lib/x86/libc++_shared.so'
+      pickFirst 'lib/x86_64/libc++_shared.so'
+      pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+      pickFirst 'lib/arm64-v8a/libc++_shared.so'
+  }
+  /** .... **/
+}
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
     }
