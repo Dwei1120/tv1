@@ -128,10 +128,11 @@ public class RemoteConfig {
         }
         // endregion 默认安全DNS
         // region 默认历史记录
-        if (GetValue(RemoteConfigName.HomeHistoryNum)!=null) {
+/*        if (GetValue(RemoteConfigName.HomeHistoryNum)!=null) {
             int remoteValue =  GetValue(RemoteConfigName.HomeHistoryNum).getAsInt();
             SetRemoteHawkConfig(HawkConfig.HISTORY_NUM, remoteValue,"默认历史记录");
         }
+*/
         // endregion 默认历史记录
         // region 默认画面缩放
         if (GetValue(RemoteConfigName.HomePictureZoom)!=null) {
@@ -139,13 +140,13 @@ public class RemoteConfig {
             SetRemoteHawkConfig(HawkConfig.PLAY_SCALE, remoteValue,"默认画面缩放");
         }
         // endregion 默认画面缩放
-        // region 默认窗口预览
+/*        // region 默认窗口预览
         if (GetValue(RemoteConfigName.HomeWindowPreview)!=null) {
             boolean remoteValue =  GetValue(RemoteConfigName.HomeWindowPreview).getAsBoolean();
             SetRemoteHawkConfig(HawkConfig.SHOW_PREVIEW, remoteValue,"默认窗口预览");
         }
         // endregion 默认窗口预览
-        
+ */       
         // endregion 默认配置
         
         // region 语音搜索
