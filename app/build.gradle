@@ -117,6 +117,7 @@ android.applicationVariants.all {
                 output.outputFileName = "DweiTV_${android.defaultConfig.versionName}.${date}_debug.apk"
             }else if (variant.buildType.name == 'release'){
                 output.outputFileName = "DweiTV_${android.defaultConfig.versionName}.${date}.apk"
+                println(String.format("UpdateUrl->http://dwei.free.svipss.top/DweiTV/update/%s", URLEncoder.encode(output.outputFileName, "UTF-8")));
             }
         }
 }
