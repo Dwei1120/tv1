@@ -386,9 +386,9 @@ public class VodController extends BaseController {
                 Hawk.put(HawkConfig.PLAY_TIME_STEP, step);
                 updatePlayerCfgView();
             }
-        });
+        }); */
     }
-*/
+
     @Override
     protected int getLayoutId() {
         return R.layout.player_vod_control_view;
