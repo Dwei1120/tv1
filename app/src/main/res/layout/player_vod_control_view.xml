@@ -162,7 +162,7 @@
                 android:text="01:00"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/ts_24" />
-
+/*
             <TextView
                 android:id="@+id/play_time_step"
                 android:layout_width="wrap_content"
@@ -174,7 +174,7 @@
                 android:padding="@dimen/vs_10"
                 android:text="1S"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/ts_24" />
+                android:textSize="@dimen/ts_24" /> */
             <TextView
                 android:id="@+id/play_time_reset"
                 android:layout_width="wrap_content"
