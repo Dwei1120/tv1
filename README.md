@@ -24,7 +24,7 @@
 嗅探增加传递如referer等其他header参数
 调整打包输出名
 
-bate
+beta
 开机启动
 语音搜索
 在线更新
