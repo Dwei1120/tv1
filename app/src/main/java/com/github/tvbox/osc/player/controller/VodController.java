@@ -101,7 +101,7 @@ public class VodController extends BaseController {
     TextView mPlayerRetry;
     TextView mPlayerTimeStartBtn;
     TextView mPlayerTimeSkipBtn;
-    TextView mPlayerTimeStepBtn;
+    //TextView mPlayerTimeStepBtn;
     TextView mPlayPauseTime;//new
     TextView mPlayLoadNetSpeed;
     TextView mVideoSize;
@@ -147,7 +147,7 @@ public class VodController extends BaseController {
         mPlayerIJKBtn = findViewById(R.id.play_ijk);
         mPlayerTimeStartBtn = findViewById(R.id.play_time_start);
         mPlayerTimeSkipBtn = findViewById(R.id.play_time_end);
-        mPlayerTimeStepBtn = findViewById(R.id.play_time_step);
+        //mPlayerTimeStepBtn = findViewById(R.id.play_time_step);
         mPlayPauseTime = findViewById(R.id.tv_sys_time);
         mPlayLoadNetSpeed = findViewById(R.id.tv_play_load_net_speed);
         mVideoSize = findViewById(R.id.tv_videosize);
@@ -337,12 +337,16 @@ public class VodController extends BaseController {
             @Override
             public void onClick(View view) {
                 try {
-                    int step = Hawk.get(HawkConfig.PLAY_TIME_STEP, 5);
+/*                    int step = Hawk.get(HawkConfig.PLAY_TIME_STEP, 5);
                     int st = mPlayerConfig.getInt("st");
                     st += step;
                     if (st > 60 * 6)
                         st = 0;
-                    mPlayerConfig.put("st", st);
+                    mPlayerConfig.put("st", st); */
+                    int current = (int) mControlWrapper.getCurrentPosition();
+                    int duration = (int) mControlWrapper.getDuration();
+                    if (current > duration / 2) return;
+                    mPlayerConfig.put("st",current/1000);
                     updatePlayerCfgView();
                     listener.updatePlayerCfg();
                 } catch (JSONException e) {
@@ -354,12 +358,16 @@ public class VodController extends BaseController {
             @Override
             public void onClick(View view) {
                 try {
-                    int step = Hawk.get(HawkConfig.PLAY_TIME_STEP, 5);
+/*                    int step = Hawk.get(HawkConfig.PLAY_TIME_STEP, 5);
                     int et = mPlayerConfig.getInt("et");
                     et += step;
                     if (et > 60 * 6)
                         et = 0;
-                    mPlayerConfig.put("et", et);
+                    mPlayerConfig.put("et", et); */
+                    int current = (int) mControlWrapper.getCurrentPosition();
+                    int duration = (int) mControlWrapper.getDuration();
+                    if (current < duration / 2) return;
+                    mPlayerConfig.put("et", (duration - current)/1000);
                     updatePlayerCfgView();
                     listener.updatePlayerCfg();
                 } catch (JSONException e) {
@@ -367,7 +375,7 @@ public class VodController extends BaseController {
                 }
             }
         });
-        mPlayerTimeStepBtn.setOnClickListener(new OnClickListener() {
+/*        mPlayerTimeStepBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 int step = Hawk.get(HawkConfig.PLAY_TIME_STEP, 5);
@@ -380,7 +388,7 @@ public class VodController extends BaseController {
             }
         });
     }
-
+*/
     @Override
     protected int getLayoutId() {
         return R.layout.player_vod_control_view;
@@ -413,7 +421,7 @@ public class VodController extends BaseController {
             mPlayerSpeedBtn.setText("x" + mPlayerConfig.getDouble("sp"));
             mPlayerTimeStartBtn.setText(PlayerUtils.stringForTime(mPlayerConfig.getInt("st") * 1000));
             mPlayerTimeSkipBtn.setText(PlayerUtils.stringForTime(mPlayerConfig.getInt("et") * 1000));
-            mPlayerTimeStepBtn.setText(Hawk.get(HawkConfig.PLAY_TIME_STEP, 5) + "s");
+            //mPlayerTimeStepBtn.setText(Hawk.get(HawkConfig.PLAY_TIME_STEP, 5) + "s");
         } catch (JSONException e) {
             e.printStackTrace();
         }
