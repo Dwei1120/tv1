@@ -11,9 +11,9 @@ public class RemoteConfigName {
     public static final String HomeSearchType="HomeSearchType"; //默认搜索展示
     public static final String HomeFastSearch="HomeFastSearch"; //默认聚合模式
     public static final String HomeDNSType="HomeDNSType"; //默认安全DNS
-    public static final String HomeHistoryNum="HomeHistoryNum"; //默认历史记录
+    //public static final String HomeHistoryNum="HomeHistoryNum"; //默认历史记录
     public static final String HomePictureZoom="HomePictureZoom"; //默认画面缩放
-    public static final String HomeWindowPreview="HomeWindowPreview"; //默认窗口预览
+    //public static final String HomeWindowPreview="HomeWindowPreview"; //默认窗口预览
     // endregion
     
     // region 语音搜索
