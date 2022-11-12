@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DiffUtil;
@@ -52,6 +53,7 @@ import com.github.tvbox.osc.util.LOG;
 import com.github.tvbox.osc.viewmodel.SourceViewModel;
 import com.orhanobut.hawk.Hawk;
 import com.owen.tvrecyclerview.widget.TvRecyclerView;
+import com.owen.tvrecyclerview.widget.V7GridLayoutManager;
 import com.owen.tvrecyclerview.widget.V7LinearLayoutManager;
 
 import org.greenrobot.eventbus.EventBus;
@@ -558,8 +560,16 @@ public class HomeActivity extends BaseActivity {
     void showSiteSwitch() {
         List<SourceBean> sites = ApiConfig.get().getSourceBeanList();
         if (sites.size() > 0) {
-            String homeSourceKey = ApiConfig.get().getHomeSourceBean().getKey();
+            //String homeSourceKey = ApiConfig.get().getHomeSourceBean().getKey();
             SelectDialog<SourceBean> dialog = new SelectDialog<>(HomeActivity.this);
+            TvRecyclerView tvRecyclerView = dialog.findViewById(R.id.list);
+            int spanCount;
+            spanCount = (int)Math.floor(sites.size()/60);
+            spanCount = Math.min(spanCount, 2);
+            tvRecyclerView.setLayoutManager(new V7GridLayoutManager(dialog.getContext(), spanCount+1));
+            ConstraintLayout cl_root = dialog.findViewById(R.id.cl_root);
+            ViewGroup.LayoutParams clp = cl_root.getLayoutParams();
+            clp.width = AutoSizeUtils.mm2px(dialog.getContext(), 380+200*spanCount);
             dialog.setTip("请选择首页数据源");
             dialog.setAdapter(new SelectDialogAdapter.SelectDialogInterface<SourceBean>() {
                 @Override
@@ -582,7 +592,7 @@ public class HomeActivity extends BaseActivity {
                     return oldItem.getKey().equals(newItem.getKey());
                 }
             }, sites, sites.indexOf(ApiConfig.get().getHomeSourceBean()));
-            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+/*            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                 @Override
                 public void onDismiss(DialogInterface dialog) {
                     if (homeSourceKey != null && !homeSourceKey.equals(Hawk.get(HawkConfig.HOME_API, ""))) {
@@ -598,6 +608,7 @@ public class HomeActivity extends BaseActivity {
                     }
                 }
             });
+*/
             dialog.show();
         }
     }
