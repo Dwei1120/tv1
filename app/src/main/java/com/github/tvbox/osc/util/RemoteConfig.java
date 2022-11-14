@@ -140,13 +140,13 @@ public class RemoteConfig {
         // region 默认画面缩放
         if (GetValue(RemoteConfigName.HomePictureZoom)!=null) {
             int remoteValue =  GetValue(RemoteConfigName.HomePictureZoom).getAsInt();
-            SetRemoteHawkConfig(HawkConfig.PLAY_SCALE, remoteValue,"默认画面缩放");
+            SetRemoteHawkConfig(HawkConfig.PLAY_SCALE, remoteValue,"默认画面缩放", false);
         }
         // endregion 默认画面缩放
 /*        // region 默认窗口预览
         if (GetValue(RemoteConfigName.HomeWindowPreview)!=null) {
             boolean remoteValue =  GetValue(RemoteConfigName.HomeWindowPreview).getAsBoolean();
-            SetRemoteHawkConfig(HawkConfig.SHOW_PREVIEW, remoteValue,"默认窗口预览");
+            SetRemoteHawkConfig(HawkConfig.SHOW_PREVIEW, remoteValue,"默认窗口预览", false);
         }
         // endregion 默认窗口预览
  */       
