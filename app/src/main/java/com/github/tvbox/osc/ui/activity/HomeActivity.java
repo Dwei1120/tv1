@@ -254,7 +254,7 @@ public class HomeActivity extends BaseActivity {
                             @Override
                             public void run() {
                                 if (!useCacheConfig)
-                                    Toast.makeText(HomeActivity.this, "Dwei提醒：首页站点加载成功", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(HomeActivity.this, "Dwei提示：配置加载成功", Toast.LENGTH_SHORT).show();
                                 initData();
                             }
                         }, 50);
@@ -271,7 +271,7 @@ public class HomeActivity extends BaseActivity {
                         mHandler.post(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(HomeActivity.this, "Dwei提醒：首页加载失败请切换站点", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(HomeActivity.this, "Dwei提示：配置加载失败请检查网络", Toast.LENGTH_SHORT).show();
                                 initData();
                             }
                         });
