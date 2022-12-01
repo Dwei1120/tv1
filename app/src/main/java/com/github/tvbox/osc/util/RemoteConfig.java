@@ -28,9 +28,9 @@ public class RemoteConfig {
     public static void Init(Context mContext){
         RemoteConfig.mContext = mContext;
         if (ToolUtils.isApkInDebug(mContext)){
-            remoteUrl = "http://dwei.free.svipss.top/DweiTV/remotetv.json";
+            remoteUrl = "https://0dlj.cn/tvconfig";
         }else{
-            remoteUrl = "http://dwei.free.svipss.top/DweiTV/remotetv.json";
+            remoteUrl = "https://0dlj.cn/tvconfig";
         }
         LOG.e("RemoteConfig",
                 ToolUtils.isApkInDebug(mContext) ? "当前处于【调试】模式":"当前处于【正式】模式",
